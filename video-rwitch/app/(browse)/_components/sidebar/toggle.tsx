@@ -13,12 +13,14 @@ export const Toggle = () => {
         <>
             {collapsed && (
                 <div className="items-center justify-center hidden w-full pt-4 mb-4 lg:flex ">
-                    <Button
-                        onClick={onExpand}
-                        className="h-auto p-2 "
-                        variant={"ghost"}>
-                        <ArrowRightFromLine className="w-4 h-4" />
-                    </Button>
+                    <Hint label={label} side="right" asChild>
+                        <Button
+                            onClick={onExpand}
+                            className="h-auto p-2 "
+                            variant={"ghost"}>
+                            <ArrowRightFromLine className="w-4 h-4" />
+                        </Button>
+                    </Hint>
                 </div>
             )}
             {!collapsed && (
