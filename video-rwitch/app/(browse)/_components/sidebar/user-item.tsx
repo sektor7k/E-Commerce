@@ -7,6 +7,7 @@ import { useSidebar } from "@/store/use-sidebar";
 import Link from "next/link";
 import { UserAvatar } from "@/components/user-avatar";
 import { LiveBadge } from "@/components/live-badge";
+import { Skeleton } from "@/components/ui/skeleton";
 
 interface UserItemsProps {
     username: string;
@@ -53,5 +54,16 @@ export const UserItem = ({
             </Link>
 
         </Button>
+    )
+}
+
+export const UserItemSkeleton = () => {
+    return (
+        <li className="flex items-center px-3 py-2 gap-x-4">
+            <Skeleton className="min-h-[32px] min-w-[32px] rounded-full"/>
+            <div className="flex-1">
+                <Skeleton className="h-6"/>
+            </div>
+        </li>
     )
 }
