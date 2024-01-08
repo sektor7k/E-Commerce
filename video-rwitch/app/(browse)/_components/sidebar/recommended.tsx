@@ -38,7 +38,7 @@ export const Recommended = ({
                 ))}
             </ul>
         </div>
-    )
+    ) 
 }
 
 export const RecommendedSkeleton = () => {

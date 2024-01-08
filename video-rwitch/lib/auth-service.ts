@@ -17,4 +17,4 @@ export const getSelf = async () => {
     }
 
     return user;
-}
+} 
