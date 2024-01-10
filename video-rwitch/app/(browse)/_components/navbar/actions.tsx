@@ -21,7 +21,7 @@ export const Actions = async () =>{
                     <Button
                         size={"sm"}
                         variant={"ghost"}
-                        className="text-muted-foreground hover: text-primary"
+                        className="text-muted-foreground hover:text-primary"
                         asChild>
                         <Link href={`/u/${user.username}`}>
                             <Clapperboard className="w-5 h-5 lg:mr-2"/>
