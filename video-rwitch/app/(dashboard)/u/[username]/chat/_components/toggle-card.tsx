@@ -1,10 +1,11 @@
 "use client";
 
 import { toast } from "sonner";
-import {useTransition } from "react";
+import { useTransition } from "react";
 
 import { updateStream } from "@/actions/stream";
 import { Switch } from "@/components/ui/switch";
+import { Skeleton } from "@/components/ui/skeleton"
 
 type FieldTypes = "isChatEnabled" | "isChatDelayed" | "isChatFollowersOnly";
 
@@ -25,8 +26,8 @@ export const ToggleCard = ({
     const onChange = () => {
         startTransition(() => {
             updateStream({ [field]: !value })
-            .then(() => toast.success("Chat settings update!"))
-            .catch(() => toast.error("Something went wrong"));
+                .then(() => toast.success("Chat settings update!"))
+                .catch(() => toast.error("Something went wrong"));
         })
     }
 
@@ -49,4 +50,10 @@ export const ToggleCard = ({
             </div>
         </div>
     )
+}
+
+export const ToggleCardSkeleton = () => {
+    return (
+        <Skeleton  className="w-full p-10 rounded-xl"/>
+    );
 }
