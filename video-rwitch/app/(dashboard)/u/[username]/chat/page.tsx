@@ -2,7 +2,7 @@ import { getSelf } from "@/lib/auth-service";
 import { getStreamByUserId } from "@/lib/stream-service";
 import { ToggleCard } from "./_components/toggle-card";
 
-const ChatPage = async() => {
+const ChatPage = async () => {
 
     const self = await getSelf();
     const stream = await getStreamByUserId(self.id);
@@ -20,9 +20,19 @@ const ChatPage = async() => {
             </div>
             <div className="space-y-4 ">
                 <ToggleCard
-                    field= "isChatEnabled"
-                    label= "Enable chat"
+                    field="isChatEnabled"
+                    label="Enable chat"
                     value={stream.isChatEnabled}
+                />
+                <ToggleCard
+                    field="isChatDelayed"
+                    label="Delay chat"
+                    value={stream.isChatDelayed}
+                />
+                <ToggleCard
+                    field="isChatFollowersOnly"
+                    label="Must be following to chat"
+                    value={stream.isChatFollowersOnly}
                 />
             </div>
         </div>
