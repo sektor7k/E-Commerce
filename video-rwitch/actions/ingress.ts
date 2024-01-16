@@ -25,5 +25,23 @@ export const createIngress = async (ingressType: IngressInput) => {
 
     // TODO: Reset previous ingress
 
-    
+    const options: CreateIngressOptions = {
+        name: self.username,
+        roomName: self.id,
+        participantName: self.username,
+        participantIdentity: self.id,
+    };
+
+    if (ingressType === IngressInput.WHIP_INPUT) {
+        options.bypassTranscoding = true;
+    } else {
+        options.video = {
+            source: TrackSource.CAMERA,
+            preset: IngressVideoEncodingPreset.H264_1080P_30FPS_3_LAYERS,
+        };
+        options.audio = {
+            source: TrackSource.MICROPHONE,
+            preset: IngressAudioEncodingPreset.OPUS_STEREO_96KBPS
+        };
+    }; 
 };
