@@ -7,6 +7,7 @@ import { Video } from "./video";
 import { useChatSidebar } from "@/store/use-chat-sidebar";
 import { cn } from "@/lib/utils";
 import { Chat } from "./chat";
+import { ChatToggle } from "./chat-toggle";
 interface StreamPlayersProps {
     user: User & { stream: Stream | null };
     stream: Stream;
@@ -36,6 +37,11 @@ export const StreamPlayer = ({
 
     return (
         <>
+            {collapsed && (
+                <div className="hidden lg:block fixed top-[100px] right-2 z-50">
+                    <ChatToggle />
+                </div>
+            )}
             <LiveKitRoom
                 serverUrl={process.env.NEXT_PUBLIC_LIVEKIT_WS_URL}
                 token={token}
@@ -54,7 +60,7 @@ export const StreamPlayer = ({
                     "col-span-1",
                     collapsed && "hidden"
                 )}>
-                    <Chat 
+                    <Chat
                         viewerName={name}
                         hostName={user.username}
                         hostIdentity={user.id}
