@@ -6,6 +6,8 @@ import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { Skeleton } from "../ui/skeleton";
 import { isFollowingUser } from "@/lib/follow-service";
+import { ChatInfo } from "./chat-info";
+
 
 
 interface ChatFormProps {
@@ -58,6 +60,11 @@ export const ChatForm = ({
             className="flex flex-col items-center p-3 gap-y-4"
         >
             <div className="w-full ">
+                <ChatInfo
+                    isDelayed={isDelayed}
+                    isFollowersOnly={isFollowersOnly}
+                />
+
                 <Input
                     onChange={(e) => onChange(e.target.value)}
                     value={value}
@@ -81,5 +88,17 @@ export const ChatForm = ({
             </div>
 
         </form>
+    );
+};
+
+export const ChatFormSkeleton = () => {
+    return (
+        <div className="flex flex-col items-center p-3 gap-y-4">
+            <Skeleton className="w-full h-10 " />
+            <div className="flex items-center ml-auto gap-x-2">
+                <Skeleton className=" h-7 w-7" />
+                <Skeleton className="w-12 h-7" />
+            </div>
+        </div>
     )
 }

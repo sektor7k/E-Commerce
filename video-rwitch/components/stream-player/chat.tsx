@@ -66,7 +66,8 @@ export const Chat = ({
         <div className=" flex flex-col bg-background border-l border-b pt-0 h-[calc(100vh-80px)]">
             <ChatHeader />
             {variant === ChatVariant.CHAT && (
-                <>
+                <>  
+                    
                     <ChatForm
                         onSubmit={onSubmit}
                         value={value}
