@@ -1,11 +1,12 @@
 "use client"
 
 import { useParticipants } from "@livekit/components-react";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useDebounce } from "usehooks-ts";
 import { Input } from "../ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { CommunityItem } from "./community-item";
+import { LocalParticipant, RemoteParticipant } from "livekit-client";
 
 interface ChatCommunityProps {
     viewerName: string;
@@ -28,15 +29,30 @@ export const ChatCommunity = ({
         setValue(newValue);
     };
 
-    // if (isHidden) {
-    //     return (
-    //         <div className="flex items-center justify-center flex-1">
-    //             <p className="text-sm text-muted-foreground">
-    //                 Community is disabled
-    //             </p>
-    //         </div>
-    //     );
-    // }
+    const filteredParticipants = useMemo(() => {
+        const deduped = participants.reduce((acc, participant) => {
+            const hostAsViewer = `host-${participant.identity}`;
+            if (!acc.some((p) => p.identity === hostAsViewer)) {
+                acc.push(participant);
+            }
+            return acc;
+        }, [] as (RemoteParticipant | LocalParticipant)[]);
+
+        return deduped.filter((participant) => {
+            return participant.name?.toLowerCase().includes(debouncedValue.toLowerCase())
+        });
+
+    }, [participants, debouncedValue])
+
+    if (isHidden) {
+        return (
+            <div className="flex items-center justify-center flex-1">
+                <p className="text-sm text-muted-foreground">
+                    Community is disabled
+                </p>
+            </div>
+        );
+    }
 
     return (
         <div className="p-4 ">
@@ -49,7 +65,7 @@ export const ChatCommunity = ({
                 <p className="hidden p-2 text-sm text-center text-muted-foreground last:block">
                     No results
                 </p>
-                {participants.map((participant) => (
+                {filteredParticipants.map((participant) => (
                     <CommunityItem
                         key={participant.identity}
                         hostName={hostName}
