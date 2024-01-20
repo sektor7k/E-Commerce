@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useDebounce } from "usehooks-ts";
 import { Input } from "../ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { CommunityItem } from "./community-item";
 
 interface ChatCommunityProps {
     viewerName: string;
@@ -47,12 +48,17 @@ export const ChatCommunity = ({
             <ScrollArea className="mt-4 gap-y-2">
                 <p className="hidden p-2 text-sm text-center text-muted-foreground last:block">
                     No results
-                    {participants.map((participant)=>(
-                        <div>
-                            
-                        </div>
-                    ))}
                 </p>
+                {participants.map((participant) => (
+                    <CommunityItem
+                        key={participant.identity}
+                        hostName={hostName}
+                        viewerName={viewerName}
+                        participantName={participant.name}
+                        participantIdentity={participant.identity}
+                    />
+                ))}
+
             </ScrollArea>
         </div>
     )
