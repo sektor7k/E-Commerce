@@ -37,7 +37,7 @@ export const ChatList = ({
     )
 }
 
-export const ChatSkeleton = () => {
+export const ChatListSkeleton = () => {
     return (
         <div className="flex items-center justify-center h-full ">
             <Skeleton className="w-1/2 h-6 "/>
