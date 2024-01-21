@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 import { onFollow, onUnfollow } from "@/actions/follow";
 import { toast } from "sonner";
+import { Skeleton } from "../ui/skeleton";
 
 interface ActionsProps {
     hostIdentity: string;
@@ -74,5 +75,11 @@ export const Actions = ({
                 : "Follow"
             }
         </Button>
+    )
+}
+
+export const ActionSkeleton = () => {
+    return (
+        <Skeleton  className="w-full h-10  lg:w-24"/>
     )
 }
