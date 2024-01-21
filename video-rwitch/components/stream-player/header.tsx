@@ -1,6 +1,7 @@
 "use client"
 
 import { UserAvatar } from "../user-avatar";
+import { VerifiedMark } from "../verified-mark";
 
 interface HeaderProps {
     hostName: string;
@@ -36,6 +37,7 @@ export const Header = ({
                         <h2 className="text-lg font-semibold ">
                             {hostName}
                         </h2>
+                        <VerifiedMark/>
                     </div>
                 </div>
             </div>
