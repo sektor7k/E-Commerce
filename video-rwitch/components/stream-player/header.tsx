@@ -1,10 +1,11 @@
 "use client"
 
 import { useParticipants, useRemoteParticipant } from "@livekit/components-react";
-import { UserAvatar } from "../user-avatar";
+import { UserAvatar, UserAvatarSkeleton } from "../user-avatar";
 import { VerifiedMark } from "../verified-mark";
 import { UserIcon } from "lucide-react";
-import { Actions } from "./actions";
+import { ActionSkeleton, Actions } from "./actions";
+import { Skeleton } from "../ui/skeleton";
 
 interface HeaderProps {
     hostName: string;
@@ -72,6 +73,21 @@ export const Header = ({
                 hostIdentity={hostIdentity}
                 isHost={isHost}
             />
+        </div>
+    )
+}
+
+export const HeaderSkeleton = () => {
+    return (
+        <div className="flex flex-col items-start justify-between px-4 lg:flex-row gap-y-4 lg:gap-y-0">
+            <div className="flex items-center gap-x-2">
+                <UserAvatarSkeleton size={"lg"} />
+                <div className="space-y-2 ">
+                    <Skeleton className="w-32 h-6 " />
+                    <Skeleton className="w-24 h-4 " />
+                </div>
+            </div>
+            <ActionSkeleton />
         </div>
     )
 }

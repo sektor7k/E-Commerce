@@ -8,7 +8,7 @@ import { useChatSidebar } from "@/store/use-chat-sidebar";
 import { cn } from "@/lib/utils";
 import { Chat, ChatSkeleton } from "./chat";
 import { ChatToggle } from "./chat-toggle";
-import { Header } from "./header";
+import { Header, HeaderSkeleton } from "./header";
 interface StreamPlayersProps {
     user: User & { stream: Stream | null };
     stream: Stream;
@@ -29,7 +29,7 @@ export const StreamPlayer = ({
     const { collapsed } = useChatSidebar((state) => state);
 
     if (!token || !name || !identity) {
-        return <StreamPlayerSkeleton/>
+        return <StreamPlayerSkeleton />
     }
 
     return (
@@ -52,7 +52,7 @@ export const StreamPlayer = ({
                         hostName={user.username}
                         hostIdentity={user.id}
                     />
-                    <Header 
+                    <Header
                         hostName={user.username}
                         hostIdentity={user.id}
                         viewerIdentity={identity}
@@ -84,8 +84,8 @@ export const StreamPlayerSkeleton = () => {
     return (
         <div className="grid h-full grid-cols-1 lg:gap-y-0 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-6">
             <div className="col-span-1 pb-10 space-y-4 lg:col-span-2 xl:col-span-2 2xl:col-span-5 lg:overflow-y-auto hidden-scrollbar">
-            <VideoSkeleton/>
-            {/* TODO: Header Skeleton */}
+                <VideoSkeleton />
+                <HeaderSkeleton />
             </div>
             <div className="col-span-1 bg-background">
                 <ChatSkeleton />
