@@ -65,6 +65,7 @@ export const InfoCard = ({
                                         fill
                                         src={thumbnailUrl}
                                         alt={name}
+                                        className="onject-cover"
                                     />
                                 </div>
                             )}
