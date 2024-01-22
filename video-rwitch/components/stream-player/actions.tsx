@@ -80,6 +80,6 @@ export const Actions = ({
 
 export const ActionSkeleton = () => {
     return (
-        <Skeleton  className="w-full h-10  lg:w-24"/>
+        <Skeleton  className="w-full h-10 lg:w-24"/>
     )
 }
