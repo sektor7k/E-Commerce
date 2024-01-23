@@ -10,8 +10,12 @@ import { Chat, ChatSkeleton } from "./chat";
 import { ChatToggle } from "./chat-toggle";
 import { Header, HeaderSkeleton } from "./header";
 import { InfoCard } from "./info-card";
+
 interface StreamPlayersProps {
-    user: User & { stream: Stream | null };
+    user: User & {
+        stream: Stream | null,
+        _count: { followedBy: number }
+    };
     stream: Stream;
     isFollowing: boolean;
 }
@@ -67,8 +71,9 @@ export const StreamPlayer = ({
                         name={stream.name}
                         thumbnailUrl={stream.thumbnailUrl}
                     />
-                   
-                 </div> 
+                    
+
+                </div>
                 <div className={cn(
                     "col-span-1",
                     collapsed && "hidden"
