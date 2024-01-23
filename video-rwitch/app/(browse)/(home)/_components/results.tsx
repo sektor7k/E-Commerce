@@ -5,3 +5,11 @@ export const Results = () => {
         </div>
     )
 }
+
+export const ResultsSkeleton = () => {
+    return (
+        <div>
+            
+        </div>
+    )
+}
