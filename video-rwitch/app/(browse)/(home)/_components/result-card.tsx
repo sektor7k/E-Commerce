@@ -27,11 +27,6 @@ export const ResultCard = ({
                     isLive={data.isLive}
                     username={data.user.username}
                 />
-                {data.isLive && (
-                    <div className="absolute transition-transform top-2 left-2 group-hover:translate-x-2 group-hover:-translate-y-2">
-                        <LiveBadge />
-                    </div>
-                )}
                 <div className="flex gap-x-3">
                     <UserAvatar
                         username={data.user.username}
