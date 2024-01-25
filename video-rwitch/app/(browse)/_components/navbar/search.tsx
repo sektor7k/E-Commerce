@@ -23,7 +23,7 @@ export const Search = () => {
             query: { term: value },
         }, { skipEmptyString: true });
 
-        router.push(url);
+        router.push(url); 
     };
 
     const onClear = () =>{
